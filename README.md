@@ -50,5 +50,63 @@ Het kan zijn dat je meerdere keren een naam moet bedenken. Sommige gebruikersnam
 
 <img width="567" alt="Scherm­afbeelding 2024-10-02 om 21 02 30" src="https://github.com/user-attachments/assets/8efe8fe6-ede5-4648-b778-c5d260046cf4">
 
-## Stap 3: Arduino Library downloaden (?)
+## Stap 3: Arduino Libraries downloaden
+Open de Arduino applicatie
+
+Klik onder File op _New Sketch_
+
+<img width="371" alt="Scherm­afbeelding 2024-10-02 om 21 20 02" src="https://github.com/user-attachments/assets/9253139f-db4a-4a96-bd53-44dbc96ca622">
+
+Klik vervolgens op Tools -> Manage Libraries
+
+<img width="778" alt="Scherm­afbeelding 2024-10-02 om 21 22 36" src="https://github.com/user-attachments/assets/9885d032-56ef-4f15-becc-b5adc866cb31">
+
+Typ onder Library Manager _universaltelegrambot_ in
+
+Installeer de onderstaande library die overeen komt met de ingevulde naam
+
+<img width="275" alt="Scherm­afbeelding 2024-10-02 om 21 29 46" src="https://github.com/user-attachments/assets/d123e16a-7bbb-4f41-9bf5-f78aef059494">
+
+Wanneer je op _Install_ hebt geklikt komt er een melding in beeld. Installeer ook de Library die wordt aangeboden
+
+Dit doe je door op _Install All_ te klikken
+
+<img width="633" alt="Scherm­afbeelding 2024-10-02 om 21 32 53" src="https://github.com/user-attachments/assets/f5a05a38-e5d0-4fa6-87a1-66edfc49e698">
+
+De library is succesvol gedownload als de melding _Succesfully installed library UniversalTelegramBot:1.3.0_ rechts onder in beeld verschijnt
+
+<img width="542" alt="Scherm­afbeelding 2024-10-02 om 21 41 44" src="https://github.com/user-attachments/assets/45801bc6-1a3d-47ec-8055-0b03f2453d31">
+
+## Stap 4: 
+Klik op File -> Examples
+
+Scroll hier helemaal omlaag richting _UniversalTelegramBot_
+
+Klik vervolgens op ESP8266 -> Echobot
+
+<img width="1440" alt="Scherm­afbeelding 2024-10-02 om 21 37 53" src="https://github.com/user-attachments/assets/649f4cdc-9ea2-45ff-82a9-40a8904fbb0e">
+
+Pas in de Arduino code de wifi instellingen aan
+
+WIFI_SSID = de naam van je wifi netwerk
+
+WIFI_PASSWORD = het wifi wachtwoord
+
+<img width="636" alt="Scherm­afbeelding 2024-10-02 om 21 48 25" src="https://github.com/user-attachments/assets/6ab40bb9-98f7-4a62-8025-b91460388352">
+
+Pas ook de BOT_TOKEN aan
+
+Plak hier de persoonlijke API token die je chatbot in Telegram je heeft gegeven
+
+<img width="502" alt="Scherm­afbeelding 2024-10-02 om 21 51 54" src="https://github.com/user-attachments/assets/17aecf89-b122-4141-a7fd-2e109f7f1761">
+
+Er staat nu geen place holder tekst meer in dit gedeelte van de code
+
+<img width="625" alt="Scherm­afbeelding 2024-10-02 om 21 48 35" src="https://github.com/user-attachments/assets/028ac1a6-a079-4524-b5b9-269d15ac9b19">
+
+### Verbinding checken
+Upload je code met de 2e blauwe knop in de linker bovenhoek
+
+<img width="165" alt="Scherm­afbeelding 2024-10-02 om 21 55 16" src="https://github.com/user-attachments/assets/6c057045-84c8-49fa-8e75-dbd1cefe6fbe">
+
 
