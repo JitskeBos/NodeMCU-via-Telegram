@@ -208,3 +208,45 @@ Opload je code en test het met de Serial Monitor. Zie je dat het lampje aan en u
 
 <img width="452" alt="Scherm­afbeelding 2024-10-04 om 16 36 30" src="https://github.com/user-attachments/assets/d33f1656-19e8-4dc9-8cac-53bb0bbc056a">
 
+## Stap 7: LED strip koppelen
+Sluit je LED strip aan zoals je gewend bent
+
+Zorg ervoor dat je de LED strip verbind met de code door de onderstaande code boven aan bij de andere #include in het bestand te zetten
+
+```Inline
+#include <Adafruit_NeoPixel.h>
+#ifdef __AVR__
+#include <avr/power.h>  // Required for 16 MHz Adafruit Trinket
+#endif
+#define PIN D1  // On Trinket or Gemma, suggest changing this to 1
+
+// How many NeoPixels are attached to the Arduino?
+#define NUMPIXELS 12  // Popular NeoPixel ring size
+
+Adafruit_NeoPixel pixels(NUMPIXELS, PIN, NEO_GRB + NEO_KHZ800);
+```
+Hiermee kan je de LED strip gaan aanroepen
+
+### Nieuwe code
+In de if statement die we in de vorige stap hebben toegevoegd gaan we de LED strip aanroepen
+
+Dat doe je door de de volgende code toe te voegen aan je _if statement_
+
+```Inline
+ for (int i = 0; i < NUMPIXELS; i++) {
+        pixels.setPixelColor(i, pixels.Color(0, 150, 0));  // Stel elke pixel in op groen (RGB: 0, 150, 0)
+      }
+      pixels.show();
+```
+En deze code aan je _else if statement_
+
+```Inline
+      pixels.clear();
+      pixels.show();
+```
+
+<img width="692" alt="Scherm­afbeelding 2024-10-04 om 17 43 25" src="https://github.com/user-attachments/assets/e7a9de43-1404-4414-ae69-735e49b59b3c">
+
+Vergeet je code niet te valideren om te checken of alles goed is aangeroepen
+
+Upload je code, en speel met je nieuwe licht aan licht uit systeem!
