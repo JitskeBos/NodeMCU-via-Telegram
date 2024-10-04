@@ -77,7 +77,7 @@ De library is succesvol gedownload als de melding _Succesfully installed library
 
 <img width="542" alt="Scherm­afbeelding 2024-10-02 om 21 41 44" src="https://github.com/user-attachments/assets/45801bc6-1a3d-47ec-8055-0b03f2453d31">
 
-## Stap 4: 
+## Stap 4: WiFi connecten
 Klik op File -> Examples
 
 Scroll hier helemaal omlaag richting _UniversalTelegramBot_
@@ -109,4 +109,102 @@ Upload je code met de 2e blauwe knop in de linker bovenhoek
 
 <img width="165" alt="Scherm­afbeelding 2024-10-02 om 21 55 16" src="https://github.com/user-attachments/assets/6c057045-84c8-49fa-8e75-dbd1cefe6fbe">
 
+De code wordt nu eerst gecontroleerd
+
+<img width="554" alt="Scherm­afbeelding 2024-10-02 om 21 56 38" src="https://github.com/user-attachments/assets/d7336175-7212-4d17-ae83-4279c709839b">
+
+Daarna wordt het geupload
+
+<img width="825" alt="Scherm­afbeelding 2024-10-04 om 15 45 34" src="https://github.com/user-attachments/assets/c61ff0ea-8487-4f6e-a967-9b1109ab22f1">
+
+### Serial Monitor uitlezen
+Open de Serial Monitor door op de knop rechts boven in het scherm te klikken
+
+<img width="217" alt="Scherm­afbeelding 2024-10-02 om 22 16 06" src="https://github.com/user-attachments/assets/73d1eeff-98f1-4c9a-97f2-7575bf9ef20f">
+
+Wanneer je geen duidelijke taal te zien krijgt in je Serial Monitor, zoals in het voorbeeld hieronder, moet je de baud aanpassen
+
+<img width="883" alt="Scherm­afbeelding 2024-10-04 om 15 51 24" src="https://github.com/user-attachments/assets/c07009ff-f9fa-4033-a66c-785e050da26a">
+
+Klik op _9600 baud_, scroll omlaag en klik op _115200 baud_
+
+<img width="180" alt="Scherm­afbeelding 2024-10-04 om 15 51 39" src="https://github.com/user-attachments/assets/49938d2a-3437-4cd4-96ab-4e4647dc688d">
+
+Upload de code opnieuw
+
+Nu zal er in de Serial Monitor weergeven worden dat er verbinding wordt gemaakt met de wifi die je net hebt ingesteld
+
+<img width="883" alt="Scherm­afbeelding 2024-10-04 om 15 55 34" src="https://github.com/user-attachments/assets/e9cdf064-4523-4675-ac03-55438cc83f7f">
+
+## Stap 5: Bot koppelen
+Wanneer je nu een bericht stuurt naar jouw Bot in Telegram, zal deze dit bericht terugkaatsen
+
+Doet het dit niet? Kijk dan of je je BOT_TOKEN goed hebt overgenomen
+
+<img width="568" alt="Scherm­afbeelding 2024-10-04 om 16 00 09" src="https://github.com/user-attachments/assets/63d00666-61e0-43e4-8e29-2e13a0c9772a">
+
+### Gesprek weergeven in Monitor
+Voeg in de _void handleNewMessages_ de volgende code toe
+
+```Inline
+Serial.print(bot.messages[i].text);
+```
+Nu wordt de imput die jij stuur naar je Bot weergeven in de Serial Monitor
+
+<img width="531" alt="Scherm­afbeelding 2024-10-04 om 16 12 47" src="https://github.com/user-attachments/assets/83e0d5cc-0c42-420d-a88c-c064712b961e">
+
+<img width="278" alt="Scherm­afbeelding 2024-10-04 om 16 12 53" src="https://github.com/user-attachments/assets/cac6d4ae-d65e-419c-bef2-79c6c44b1b14">
+
+### Antwoord toevoegen
+Om je Bot een specifiek antwoord te laten geven op jouw input voeg je de volgende code toe aan de  _void handleNewMessages_
+
+```Inline
+bot.sendMessage(bot.messages[i].chat_id, "Alles goed kameraad?", "");
+```
+
+_De teksts tussen de "" kan vervangen worden door wat je zelf wilt. In dit voorbeeld gebruik ik "Alles goed kameraad?"_
+
+<img width="530" alt="Scherm­afbeelding 2024-10-04 om 16 19 17" src="https://github.com/user-attachments/assets/8403e727-12a2-44f0-ab20-09549533f1a7">
+
+## Stap 6: LED aansturen
+Voeg aan de _void setup_ de volgende code toe
+
+```Inline
+pinMode(LED_BUILTIN, OUTPUT);  // Initialize the LED_BUILTIN pin as an output
+```
+
+Nu kan je het blauwe lampje op je NodeMCU aansturen
+
+### Aan / uit
+Om te zorgen dat het blauwe lampje aan en uit kan gaan moet er een _if statement_ toegevoegd worden aan de _void handleNewMessages_
+
+```Inline
+if (bot.messages[i].text == "Licht aan") {
+      digitalWrite(LED_BUILTIN, LOW);
+    }
+
+else if (bot.messages[i].text == "Licht uit") {
+      digitalWrite(LED_BUILTIN, HIGH);
+    }
+```
+
+Stuur je je bot "Licht aan" dan zal het lampje aan gaan. Stuur je "Licht uit" dan gaat het uit.
+
+Om zeker te weten dat de code goed wordt ontvangen kan je dit controleren in de Serial Monitor
+
+Voeg dan de onderstaande code toe onder de _digitalWrite_ code
+
+```Inline
+Serial.print("...");
+```
+
+Vul op de "..." de tekst neer die weergeven moet worden als het statement wordt aangeroepen
+
+<img width="638" alt="Scherm­afbeelding 2024-10-04 om 16 33 58" src="https://github.com/user-attachments/assets/611c015d-4846-45ec-8980-aeebf019f5cd">
+
+Opload je code en test het met de Serial Monitor. Zie je dat het lampje aan en uit gaat?
+
+<img width="533" alt="Scherm­afbeelding 2024-10-04 om 16 36 23" src="https://github.com/user-attachments/assets/338f09a6-50fa-4095-a1ab-c0f1a9104462">
+
+<img width="452" alt="Scherm­afbeelding 2024-10-04 om 16 36 30" src="https://github.com/user-attachments/assets/d33f1656-19e8-4dc9-8cac-53bb0bbc056a">
 
