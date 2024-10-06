@@ -98,11 +98,7 @@ Pas ook de BOT_TOKEN aan
 
 Plak hier de persoonlijke API token die je chatbot in Telegram je heeft gegeven
 
-<img width="502" alt="Scherm­afbeelding 2024-10-02 om 21 51 54" src="https://github.com/user-attachments/assets/17aecf89-b122-4141-a7fd-2e109f7f1761">
-
 Er staat nu geen place holder tekst meer in dit gedeelte van de code
-
-<img width="625" alt="Scherm­afbeelding 2024-10-02 om 21 48 35" src="https://github.com/user-attachments/assets/028ac1a6-a079-4524-b5b9-269d15ac9b19">
 
 ### Verbinding checken
 Upload je code met de 2e blauwe knop in de linker bovenhoek
